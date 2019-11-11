@@ -6,9 +6,10 @@ export const StyledHeader = styled.header`
   text-align: center;
   align-items: center;
   justify-content: space-between;
-  background: black;
+  background: white;
+  color:black;
   padding: 1rem;
-  margin-bottom: 1.45rem;
+  /* margin-bottom: 1.45rem; */
   width: 100%;
 
   div {
@@ -18,7 +19,7 @@ export const StyledHeader = styled.header`
   }
   h1 {
     margin: 0;
-    color: white;
+    color: black;
     text-decoration: none;
   }
   li {
@@ -26,6 +27,8 @@ export const StyledHeader = styled.header`
   }
   ul {
     margin: 0;
+    text-decoration:none;
+    list-style-type:none;
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -35,6 +38,6 @@ export const StyledHeader = styled.header`
 `
 
 export const StyledLink = styled(Link)`
-  color: white;
+  color: black;
   text-decoration: none;
 `

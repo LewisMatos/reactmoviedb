@@ -1,11 +1,27 @@
 import styled from "styled-components"
 
 export const StyledMovieDetail = styled.div`
-  width: 1000px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  display:flex
+    position: absolute;
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ),url(${props => props.backdrop});
+    will-change: opacity;
+    transition: filter 1s;
+    color:white;
 
+
+  .container{
+    display:flex;
+    justify-content:center;
+   align-items:center;
+   text-align:center;
+    z-index:1;
+  }
   section.images {
     display: flex;
     align-items: flex-start;
@@ -23,7 +39,6 @@ export const StyledMovieDetail = styled.div`
 
   .poster_wrapper {
     display: flex;
-    min-height: 450px;
   }
 
   .header {
@@ -63,4 +78,6 @@ export const StyledMovieDetail = styled.div`
       color:red;
     }
   }
+
+
 `

@@ -5,6 +5,7 @@ import { Router, Link } from "@reach/router"
 
 import Home from "../components/Home"
 import Movie from './Movie';
+import { GlobalStyle } from '../style/GlobalStyle';
 
 const IndexPage = () => {
   return (
@@ -13,6 +14,7 @@ const IndexPage = () => {
         <Home path="/" />
         <Movie path="/movies/:movieId" />
       </Router>
+      <GlobalStyle />
     </>
   )
 }
