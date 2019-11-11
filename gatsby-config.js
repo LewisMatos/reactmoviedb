@@ -10,6 +10,8 @@ module.exports = {
     title: `React Movie DB`,
     description: `react project using the Movie Database Api`,
     author: `Lewis Matos`,
+    tmdb_url: `${process.env.API_URL}`,
+    tmdb_api_key: `${process.env.API_KEY}`,
     top_rated_endpoint: `${process.env.API_URL}movie/top_rated?api_key=${process.env.API_KEY}`,
     popular_endpoint: `${process.env.API_URL}movie/popular?api_key=${process.env.API_KEY}`,
     image_url: `http://image.tmdb.org/t/p/`,

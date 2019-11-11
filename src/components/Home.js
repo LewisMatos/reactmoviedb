@@ -39,7 +39,7 @@ class Home extends React.Component {
         <Header siteTitle={title} getMovies={this.getMovies} />
         <MovieGrid>
           {this.state.movies.map(movie => {
-            return <MovieCard key={movie.id} image={`${image_url}${image_size}${movie.poster_path}`}/>
+            return <MovieCard key={movie.id} movieId={movie.id} image={`${image_url}${image_size}${movie.poster_path}`}/>
           })}
         </MovieGrid>
       </>
