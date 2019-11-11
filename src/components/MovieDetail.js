@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { StyledMovieDetail } from '../style/StyledMovieDetail';
 
-const MovieDetail = ({ image, movieId, children}) => {
+const MovieDetail = ({children}) => {
   return(
   <StyledMovieDetail>
      {children}

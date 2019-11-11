@@ -2,6 +2,7 @@ import React, { Component } from "react"
 
 import { StaticQuery } from "gatsby"
 import MovieDetail from "../components/MovieDetail"
+import Header from "../components/header"
 
 class Movie extends React.Component {
   state = {
@@ -30,7 +31,6 @@ class Movie extends React.Component {
     } catch (error) {
       console.log(error)
     }
-
   }
 
   componentDidMount() {
@@ -39,23 +39,54 @@ class Movie extends React.Component {
 
   render() {
     console.log(this.state)
-    const { image_url, image_size } = this.props.site.siteMetadata
-    const {poster_path, title, overview, runtime, vote_average} = this.state.movie_details
-    const image = `${image_url}${image_size}${this.state.movie_details.poster_path}`;
+    const {
+      image_url,
+      image_size,
+      title: siteTitle,
+    } = this.props.site.siteMetadata
+    const {
+      poster_path,
+      title,
+      overview,
+      runtime,
+      vote_average,
+    } = this.state.movie_details
+    const image = `${image_url}${image_size}${this.state.movie_details.poster_path}`
     return (
       <>
         <div>
+          <Header siteTitle={siteTitle} />
           <MovieDetail>
-              <img
-                src={image}
-                alt="Poster"
-              />
-              <div className="details">
-              <h1 className="title">{title}</h1>
-              <h1 className="vote">{vote_average}</h1>
-              <h1 className="runtime">{runtime}</h1>
-              <p className="overview">{overview}</p>
-              </div>
+            <div className="single_column">
+              <section className="images inner">
+                <div className="poster">
+                  <img src={image} alt="Poster" />
+                </div>
+                <div className="poster_wrapper">
+                  <section className="header">
+                    <ul className="info">
+                      <li className="title">
+                        <h1>{title}</h1>
+                      </li>
+                      <li className="vote">
+                        <span>userscore: </span>
+                        <span className="vote__green">{vote_average}</span>
+                      </li>
+                      <li className="runtime">
+                        <span>runtime: </span>
+                        <span className="runtime__red">{runtime}</span>
+                      </li>
+                      <li className="overview">
+                        <p>{overview}</p>
+                      </li>
+                      <li className="play">
+                      <button>PLAY TRAILER</button>
+                      </li>
+                    </ul>
+                  </section>
+                </div>
+              </section>
+            </div>
           </MovieDetail>
         </div>
       </>
@@ -70,6 +101,7 @@ export default ({ movieId }) => {
         query {
           site {
             siteMetadata {
+              title
               tmdb_url
               tmdb_api_key
               image_url

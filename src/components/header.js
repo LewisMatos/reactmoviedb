@@ -20,6 +20,7 @@ const getName = (event) =>{
         <StyledLink to="/">{siteTitle}</StyledLink>
       </h1>
       <nav>
+      {getMovies  &&
         <ul>
           <li>
             <button onClick={getName} data-endpoint="popular">Popular Movies</button>
@@ -28,6 +29,7 @@ const getName = (event) =>{
             <button onClick={getName} data-endpoint="top_rated">Top Rated Movies</button>
           </li>
         </ul>
+         }
       </nav>
     </StyledHeader>
   )
