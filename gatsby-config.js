@@ -1,8 +1,19 @@
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+console.log(`Using environment config: '${activeEnv}'`)
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `React Movie DB`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `react project using the Movie Database Api`,
+    author: `Lewis Matos`,
+    top_rated_endpoint: `${process.env.API_URL}movie/top_rated?api_key=${process.env.API_KEY}`,
+    popular_endpoint: `${process.env.API_URL}movie/popular?api_key=${process.env.API_KEY}`,
+    image_url: `http://image.tmdb.org/t/p/`,
+    image_size: `w780`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
