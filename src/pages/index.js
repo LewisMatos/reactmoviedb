@@ -1,47 +1,66 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
+import React, { Component } from "react"
 import "normalize.css"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
-import { useSiteMetadata } from "../hooks/useSiteMetaData"
 import MovieGrid from "../components/MovieGrid"
+import Header from "../components/header"
+import { StaticQuery } from "gatsby"
 
-const IndexPage = () => {
-  const [state, setState] = useState({ movies: [] })
-
-  // console.log(state)
-  const {
-    popular_endpoint,
-    top_rated_endpoint,
-    image_url,
-    image_size,
-  } = useSiteMetadata()
-
-  const getMovies = async endpoint => {
-    const res = await fetch(endpoint)
-    const data = await res.json()
-    setState(prev => ({
-      ...prev,
-      movies: [...data.results],
-    }))
+class IndexPage extends React.Component {
+  state = {
+    movies: [],
+    endpoint: "",
   }
 
-  useEffect(() => {
-    getMovies(popular_endpoint)
-  }, [popular_endpoint])
+  getMovies = async endpoint => {
+    try {
+      const res = await fetch(endpoint)
+      const data = await res.json()
+      this.setState(prev => ({ ...prev, movies: [...data.results] }))
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(this.state)
+  }
 
-  return (
-    <Layout>
-      <SEO title="Home" />
-      <MovieGrid>
-        {state.movies.map(movie => {
-          return <h1 key={movie.id}>{movie.title}</h1>
-        })}
-      </MovieGrid>
-    </Layout>
-  )
+  componentDidMount() {
+    const {
+      popular_endpoint,
+      top_rated_endpoint,
+    } = this.props.site.siteMetadata
+    this.getMovies(popular_endpoint)
+  }
+
+
+  render() {
+    const { title } = this.props.site.siteMetadata
+    return (
+      <>
+        <Header siteTitle={title} getMovies={this.getMovies} />
+        <MovieGrid>
+          {this.state.movies.map(movie => {
+            return <h1 key={movie.id}>{movie.title}</h1>
+          })}
+        </MovieGrid>
+      </>
+    )
+  }
 }
 
-export default IndexPage
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            top_rated_endpoint
+            popular_endpoint
+            image_url
+            image_size
+          }
+        }
+      }
+    `}
+    render={data => <IndexPage site={data.site} />}
+  />
+)
