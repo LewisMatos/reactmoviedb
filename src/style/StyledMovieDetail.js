@@ -1,28 +1,29 @@
 import styled from "styled-components"
 
 export const StyledMovieDetail = styled.div`
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   display:flex
-    position: absolute;
-    z-index: -1;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ),url(${props => props.backdrop});
-    will-change: opacity;
-    transition: filter 1s;
-    color:white;
-
+  position: absolute;
+  color:white;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ),url(${props =>
+    props.backdrop});
 
   .container{
     display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
     justify-content:center;
    align-items:center;
    text-align:center;
+   padding-top:5rem;
     z-index:1;
   }
-  section.images {
+  .images {
     display: flex;
     align-items: flex-start;
     flex-wrap: nowrap;
@@ -37,16 +38,12 @@ export const StyledMovieDetail = styled.div`
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   }
 
-  .poster_wrapper {
-    display: flex;
-  }
-
-  .header {
+  .details {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: center;
-    width: 700px;
+    width:50vw;
     box-sizing: border-box;
     padding-left: 40px;
   }
@@ -61,21 +58,25 @@ export const StyledMovieDetail = styled.div`
     text-decoration:none;
     list-style-type:none;
     padding:0;
-    text-transform: uppercase;
 
     li{
       * + *{
       margin:10px;
       }
     }
-    .vote{
+    .vote,.runtime{
+    text-transform: uppercase;
       margin-bottom:20px;
     }
+
     .vote__green{
       color:green;
     }
     .runtime__red{
       color:red;
+    }
+    .overview{
+      font-family: Droid Serif;
     }
   }
 
