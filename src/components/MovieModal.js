@@ -1,6 +1,6 @@
-import React from "react"
-import ModalVideo from "react-modal-video"
-import { StyledModal } from "../style/StyledModal"
+import React from 'react'
+import ModalVideo from 'react-modal-video'
+import { StyledModal } from '../style/StyledModal'
 
 const MovieModal = ({ isOpen, youtubeKey, closeModal }) => {
   return (

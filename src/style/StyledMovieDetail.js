@@ -1,8 +1,8 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const StyledMovieDetail = styled.div`
   min-width: 100vw;
-  min-height: 100vh;
+  min-height: 92vh;
   display:flex
   position: absolute;
   color:white;
@@ -10,8 +10,7 @@ export const StyledMovieDetail = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ),url(${props =>
-    props.backdrop});
+  background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ),url(${props => props.backdrop});
 
   .container{
     display:flex;
@@ -30,12 +29,14 @@ export const StyledMovieDetail = styled.div`
   }
 
   img {
-    min-width: 100%;
-    min-height: 100%;
+    width:20vw;
     border-width: 0px;
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    @media only screen and (max-width: 600px) {
+      width:100vw;
+    }
   }
 
   .details {
@@ -46,15 +47,17 @@ export const StyledMovieDetail = styled.div`
     width:50vw;
     box-sizing: border-box;
     padding-left: 40px;
+
+ @media only screen and (max-width: 600px) {
+   width:100%;
+}
   }
   .title {
     width: 100%;
-    font-size: 1.2rem;
   }
   ul{
     display:flex;
     flex-direction:column;
-    font-size: 2rem;
     text-decoration:none;
     list-style-type:none;
     padding:0;
@@ -70,10 +73,17 @@ export const StyledMovieDetail = styled.div`
     }
 
     .vote__green{
-      color:green;
+      border-radius: 20px;
+    border: 2px solid white;
+    background-color: black;
+    color: #03f603;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     }
     .runtime__red{
-      color:red;
+    color: red;
     }
     .overview{
       font-family: Droid Serif;

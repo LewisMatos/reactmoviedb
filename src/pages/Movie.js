@@ -1,10 +1,10 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import { StaticQuery } from "gatsby"
-import MovieDetail from "../components/MovieDetail"
-import Header from "../components/Header"
-import MovieModal from "../components/MovieModal"
-import { StyledButton } from "../style/StyledButton"
+import { StaticQuery } from 'gatsby'
+import MovieDetail from '../components/MovieDetail'
+import Header from '../components/Header'
+import MovieModal from '../components/MovieModal'
+import { StyledButton } from '../style/StyledButton'
 
 class Movie extends React.Component {
   constructor() {
@@ -12,7 +12,7 @@ class Movie extends React.Component {
     this.state = {
       movie_details: {},
       videos: [],
-      youtubeKey: "",
+      youtubeKey: '',
       isOpen: false,
     }
   }
@@ -37,20 +37,19 @@ class Movie extends React.Component {
         youtubeKey: MovieVideoData.results[0].key,
       }))
 
-      localStorage.setItem(movieId, JSON.stringify(this.state));
-
+      localStorage.setItem(movieId, JSON.stringify(this.state))
     } catch (error) {
       console.log(error)
     }
   }
 
   componentDidMount() {
-    const {movieId} = this.props;
-    if(localStorage.getItem(movieId)){
+    const { movieId } = this.props
+    if (localStorage.getItem(movieId)) {
       this.setState(JSON.parse(localStorage.getItem(movieId)))
-      return;
+      return
     }
-    console.log('here');
+    console.log('here')
     this.getMovieDetails()
   }
 
@@ -63,11 +62,7 @@ class Movie extends React.Component {
   }
 
   render() {
-    const {
-      image_url,
-      image_size,
-      title: siteTitle,
-    } = this.props.site.siteMetadata
+    const { image_url, image_size, title: siteTitle } = this.props.site.siteMetadata
     const {
       poster_path,
       backdrop_path,
@@ -81,46 +76,42 @@ class Movie extends React.Component {
     const image = `${image_url}${image_size}${this.state.movie_details.poster_path}`
     return (
       <>
-          <Header siteTitle={siteTitle} />
-          <MovieDetail backdrop={ backdrop_path ? `${image_url}original${backdrop_path}` : ''}>
-            <div className="container">
-              <div className="poster">
-                <img src={image} alt="Poster" />
-              </div>
-                <section className="details">
-                  <ul className="info">
-                    <li className="title">
-                      {release_date && (
-                        <h1>
-                          {title} ({release_date.split("-")[0]})
-                        </h1>
-                      )}
-                    </li>
-                    <li className="vote">
-                      <span>userscore: </span>
-                      <span className="vote__green">{vote_average}</span>
-                    </li>
-                    <li className="runtime">
-                      <span>runtime: </span>
-                      <span className="runtime__red">{runtime} min</span>
-                    </li>
-                    <li className="overview">
-                      <p>{overview}</p>
-                    </li>
-                    <li className="play">
-                      <StyledButton>
-                        <button onClick={this.openModal}>PLAY TRAILER</button>
-                      </StyledButton>
-                    </li>
-                  </ul>
-                </section>
+        <Header siteTitle={siteTitle} />
+        <MovieDetail backdrop={backdrop_path ? `${image_url}original${backdrop_path}` : ''}>
+          <div className="container">
+            <div className="poster">
+              <img src={image} alt="Poster" />
             </div>
-          </MovieDetail>
-        <MovieModal
-          isOpen={isOpen}
-          youtubeKey={youtubeKey}
-          closeModal={this.closeModal}
-        />
+            <section className="details">
+              <ul className="info">
+                <li className="title">
+                  {release_date && (
+                    <h1>
+                      {title} ({release_date.split('-')[0]})
+                    </h1>
+                  )}
+                </li>
+                <li className="vote">
+                  <span>userscore: </span>
+                  <span className="vote__green">{vote_average}</span>
+                </li>
+                <li className="runtime">
+                  <span>runtime: </span>
+                  <span className="runtime__red">{runtime} min</span>
+                </li>
+                <li className="overview">
+                  <p>{overview}</p>
+                </li>
+                <li className="play">
+                  <StyledButton>
+                    <button onClick={this.openModal}>PLAY TRAILER</button>
+                  </StyledButton>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </MovieDetail>
+        <MovieModal isOpen={isOpen} youtubeKey={youtubeKey} closeModal={this.closeModal} />
       </>
     )
   }

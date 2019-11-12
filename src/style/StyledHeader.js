@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Link } from "gatsby"
+import styled from 'styled-components'
+import { Link } from 'gatsby'
 export const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
@@ -7,9 +7,11 @@ export const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   background: white;
-  color:black;
-  font-size: 1.2rem;
+  color: black;
 
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 
   div {
     margin: 0 auto;
@@ -18,7 +20,7 @@ export const StyledHeader = styled.header`
   }
   h1 {
     margin: 0;
-      padding:1rem;
+    padding: 1rem;
 
     color: black;
     text-decoration: none;
@@ -28,15 +30,14 @@ export const StyledHeader = styled.header`
   }
   ul {
     margin: 0;
-    text-decoration:none;
-    list-style-type:none;
+    text-decoration: none;
+    list-style-type: none;
     display: flex;
     flex-direction: row;
     text-align: center;
     align-items: center;
     justify-content: center;
   }
-
 `
 
 export const StyledLink = styled(Link)`

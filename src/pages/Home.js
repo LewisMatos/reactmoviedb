@@ -1,15 +1,15 @@
-import React, { Component } from "react"
-import "normalize.css"
+import React, { Component } from 'react'
+import 'normalize.css'
 
-import MovieGrid from "../components/MovieGrid"
-import Header from "../components/Header"
-import { StaticQuery } from "gatsby"
-import MovieCard from '../components/MovieCard';
+import MovieGrid from '../components/MovieGrid'
+import Header from '../components/Header'
+import { StaticQuery } from 'gatsby'
+import MovieCard from '../components/MovieCard'
 
 class Home extends React.Component {
   state = {
     movies: [],
-    endpoint: "",
+    endpoint: '',
   }
 
   getMovies = async endpoint => {
@@ -18,35 +18,32 @@ class Home extends React.Component {
       const data = await res.json()
       this.setState(prev => ({ ...prev, movies: [...data.results] }))
 
-      sessionStorage.setItem('movies', JSON.stringify(this.state));
-
+      sessionStorage.setItem('movies', JSON.stringify(this.state))
     } catch (error) {
       console.log(error)
     }
   }
 
   componentDidMount() {
-
-    if(sessionStorage.movies){
+    if (sessionStorage.movies) {
       this.setState(JSON.parse(sessionStorage.movies))
-      return;
+      return
     }
-    const {
-      popular_endpoint,
-      top_rated_endpoint,
-    } = this.props.site.siteMetadata
+    console.log("here");
+    const { popular_endpoint, top_rated_endpoint } = this.props.site.siteMetadata
     this.getMovies(popular_endpoint)
   }
 
-
   render() {
-    const { title,image_url,image_size } = this.props.site.siteMetadata
+    const { title, image_url, image_size } = this.props.site.siteMetadata
     return (
       <>
         <Header siteTitle={title} getMovies={this.getMovies} />
         <MovieGrid>
           {this.state.movies.map(movie => {
-            return <MovieCard key={movie.id} movieId={movie.id} image={`${image_url}${image_size}${movie.poster_path}`}/>
+            return (
+              <MovieCard key={movie.id} movieId={movie.id} image={`${image_url}${image_size}${movie.poster_path}`} />
+            )
           })}
         </MovieGrid>
       </>

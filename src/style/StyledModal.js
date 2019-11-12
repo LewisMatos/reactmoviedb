@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 export const StyledModal = styled.div`
   $animation-speed: 0.3s;
   $animation-function: ease-out;
@@ -122,7 +122,7 @@ export const StyledModal = styled.div`
 
     &:before,
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       height: 2px;
       width: 100%;
