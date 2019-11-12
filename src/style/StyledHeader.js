@@ -6,8 +6,8 @@ export const StyledHeader = styled.header`
   text-align: center;
   align-items: center;
   justify-content: space-between;
-  background: white;
-  color: black;
+  background: black;
+  color: white;
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
@@ -41,6 +41,9 @@ export const StyledHeader = styled.header`
 `
 
 export const StyledLink = styled(Link)`
-  color: black;
+  color: #BE194B;
+  font-size:.5em;
   text-decoration: none;
+  line-height: 100px;
+  text-align: center;
 `
