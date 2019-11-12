@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import 'normalize.css'
 
 import MovieGrid from '../components/MovieGrid'
@@ -29,7 +30,7 @@ class Home extends React.Component {
       this.setState(JSON.parse(sessionStorage.movies))
       return
     }
-    console.log("here");
+    // console.log("here");
     const { popular_endpoint, top_rated_endpoint } = this.props.site.siteMetadata
     this.getMovies(popular_endpoint)
   }
@@ -51,6 +52,11 @@ class Home extends React.Component {
   }
 }
 
+Home.propTypes = {
+  siteMetaData: PropTypes.object,
+}
+
+
 export default () => (
   <StaticQuery
     query={graphql`
@@ -69,3 +75,5 @@ export default () => (
     render={data => <Home site={data.site} />}
   />
 )
+
+

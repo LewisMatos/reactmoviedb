@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { StyledMovieCard } from '../style/StyledMovieCard'
 
@@ -13,6 +14,10 @@ const MovieCard = ({ image, movieId }) => {
       </Link>
     </StyledMovieCard>
   )
+}
+MovieCard.propTypes = {
+  image: PropTypes.string,
+  movieId: PropTypes.func.isRequired
 }
 
 export default MovieCard

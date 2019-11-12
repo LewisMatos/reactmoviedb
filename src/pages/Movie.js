@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-
+import propTypes from 'prop-types';
 import { StaticQuery } from 'gatsby'
+
 import MovieDetail from '../components/MovieDetail'
 import Header from '../components/Header'
 import MovieModal from '../components/MovieModal'
+
 import { StyledButton } from '../style/StyledButton'
 
 class Movie extends React.Component {
@@ -64,6 +66,7 @@ class Movie extends React.Component {
 
   render() {
     const { image_url, image_size, title: siteTitle } = this.props.site.siteMetadata
+
     const {
       poster_path,
       backdrop_path,
@@ -73,8 +76,11 @@ class Movie extends React.Component {
       vote_average,
       release_date,
     } = this.state.movie_details
+
     const { isOpen, youtubeKey } = this.state
+
     const image = `${image_url}${image_size}${this.state.movie_details.poster_path}`
+
     return (
       <>
         <Header siteTitle={siteTitle} />
@@ -116,6 +122,10 @@ class Movie extends React.Component {
       </>
     )
   }
+}
+
+Movie.propTypes = {
+  siteMetaData: PropTypes.object,
 }
 
 export default ({ movieId }) => {
