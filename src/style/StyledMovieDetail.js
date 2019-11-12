@@ -89,6 +89,4 @@ export const StyledMovieDetail = styled.div`
       font-family: Droid Serif;
     }
   }
-
-
 `

@@ -9,9 +9,9 @@ export const StyledHeader = styled.header`
   background: black;
   color: white;
   padding: 0;
-   @media only screen and (max-width: 600px) {
-      flex-direction: column;
-    }
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
   div {
     margin: 0 auto;
     max-width: 960px;
@@ -27,11 +27,11 @@ export const StyledHeader = styled.header`
   li {
     margin: 0 2rem;
     @media only screen and (max-width: 600px) {
-      margin:0;
+      margin: 0;
     }
   }
   ul {
-    padding:0;
+    padding: 0;
     margin: 0;
     text-decoration: none;
     list-style-type: none;
@@ -50,8 +50,8 @@ export const StyledLink = styled(Link)`
   line-height: 3;
   text-align: center;
   @media only screen and (max-width: 600px) {
-    padding:0;
-    line-height:1.5;
+    padding: 0;
+    line-height: 1.5;
     font-size: 1em;
   }
 `
