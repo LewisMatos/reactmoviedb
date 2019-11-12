@@ -14,7 +14,7 @@ module.exports = {
     tmdb_api_key: `${process.env.API_KEY}`,
     top_rated_endpoint: `${process.env.API_URL}movie/top_rated?api_key=${process.env.API_KEY}`,
     popular_endpoint: `${process.env.API_URL}movie/popular?api_key=${process.env.API_KEY}`,
-    image_url: `http://image.tmdb.org/t/p/`,
+    image_url: `https://image.tmdb.org/t/p/`,
     image_size: `w780`,
   },
   plugins: [
