@@ -29,12 +29,13 @@ class Movie extends React.Component {
 
       const MovieVideoResponse = await fetch(movieVideoEndpoint)
       const MovieVideoData = await MovieVideoResponse.json()
+      const youTubeKey = Array.isArray(MovieVideoData.results) && MovieVideoData.results.length ? MovieVideoData.results[0].key : '';
 
       this.setState(prev => ({
         ...prev,
         movie_details: { ...MovieDetailData },
         videos: [...MovieVideoData.results],
-        youtubeKey: MovieVideoData.results[0].key,
+        youtubeKey: youTubeKey,
       }))
 
       localStorage.setItem(movieId, JSON.stringify(this.state))

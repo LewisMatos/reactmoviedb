@@ -10,7 +10,7 @@ export const StyledButton = styled.div`
     color: #be194b;
     text-align: center;
     background-color: black;
-    font-size:.8em;
+    font-size:.9em;
     font-family: 'Droid Serif';
     font-weight: bold;
     :hover {
