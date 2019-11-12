@@ -17,6 +17,16 @@
 
 > react project using The Movie Database API
 
+
+# 🏠 [ReactMovieDB](https://reactmoviedb.lewismatos.com/)
+## Environment Variables
+
+> Create a .env.development file
+```
+API_URL = https://api.themoviedb.org/3/
+API_KEY = 12345789538342432
+```
+
 ## Install
 
 ```sh
