@@ -15,10 +15,11 @@
   </a>
 </p>
 
-> react project using The Movie Database API
+## React project built with GatsbyJS and The Movie Database API
 
 
 # 🏠 [ReactMovieDB](https://reactmoviedb.lewismatos.com/)
+
 ## Environment Variables
 
 > Create a .env.development file
