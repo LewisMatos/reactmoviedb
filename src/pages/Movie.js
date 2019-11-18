@@ -125,7 +125,7 @@ class Movie extends React.Component {
 }
 
 Movie.propTypes = {
-  siteMetaData: PropTypes.object,
+  siteMetaData: propTypes.object,
 }
 
 export default ({ movieId }) => {
