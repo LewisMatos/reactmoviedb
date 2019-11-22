@@ -17,7 +17,7 @@ const MovieCard = ({ image, movieId }) => {
 }
 MovieCard.propTypes = {
   image: PropTypes.string,
-  movieId: PropTypes.func.isRequired
+  movieId: PropTypes.number
 }
 
 export default MovieCard
