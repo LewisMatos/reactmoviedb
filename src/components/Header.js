@@ -44,7 +44,7 @@ const Header = ({ siteTitle, getMovies }) => {
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-  getMovies: PropTypes.func.isRequired
+  getMovies: PropTypes.func
 }
 
 Header.defaultProps = {

@@ -9,7 +9,7 @@ const MovieDetail = ({ children, backdrop }) => {
 }
 
 MovieDetail.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   backdrop: PropTypes.string,
 }
 export default MovieDetail

@@ -10,7 +10,7 @@ const MovieGrid = ({ children }) => (
 )
 
 MovieGrid.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }
 
 export default MovieGrid

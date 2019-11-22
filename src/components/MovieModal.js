@@ -19,7 +19,7 @@ const MovieModal = ({ isOpen, youtubeKey, closeModal }) => {
 }
 
 MovieModal.propTypes = {
-  isOpen: PropTypes.string,
+  isOpen: PropTypes.bool,
   youtubeKey: PropTypes.string,
   closeModal: PropTypes.func.isRequired,
 }
