@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import propTypes from 'prop-types';
+import propTypes from 'prop-types'
 import { StaticQuery } from 'gatsby'
 
 import MovieDetail from '../components/MovieDetail'
@@ -8,15 +8,12 @@ import MovieModal from '../components/MovieModal'
 
 import { StyledButton } from '../style/StyledButton'
 
-class Movie extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      movie_details: {},
-      videos: [],
-      youtubeKey: '',
-      isOpen: false,
-    }
+class Movie extends Component {
+  state = {
+    movie_details: {},
+    videos: [],
+    youtubeKey: '',
+    isOpen: false,
   }
 
   getMovieDetails = async endpoint => {
@@ -31,7 +28,8 @@ class Movie extends React.Component {
 
       const MovieVideoResponse = await fetch(movieVideoEndpoint)
       const MovieVideoData = await MovieVideoResponse.json()
-      const youTubeKey = Array.isArray(MovieVideoData.results) && MovieVideoData.results.length ? MovieVideoData.results[0].key : '';
+      const youTubeKey =
+        Array.isArray(MovieVideoData.results) && MovieVideoData.results.length ? MovieVideoData.results[0].key : ''
 
       this.setState(prev => ({
         ...prev,
@@ -68,7 +66,6 @@ class Movie extends React.Component {
     const { image_url, image_size, title: siteTitle } = this.props.site.siteMetadata
 
     const {
-      poster_path,
       backdrop_path,
       title,
       overview,

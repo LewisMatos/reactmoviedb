@@ -1,31 +1,37 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import 'normalize.css'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 import MovieGrid from '../components/MovieGrid'
 import Header from '../components/Header'
-// import { StaticQuery } from 'gatsby'
 import MovieCard from '../components/MovieCard'
+
 import { useSiteMetadata } from '../hooks/useSiteMetaData'
+import { StyledHome } from '../style/StyledHome'
 
 const Home = () => {
-  const [movies, setMovie] = useState([])
-  const [endpoint, setEndpoing] = useState('')
-
   const { title, top_rated_endpoint, popular_endpoint, image_url, image_size } = useSiteMetadata()
+
+  const [movies, setMovie] = useState([])
+  const [currentSelection, setCurrentSelection] = useState('Popular')
+  const [currentPage, setCurrentPage] = useState(0)
 
   const getMovies = async endpoint => {
     try {
       const res = await fetch(endpoint)
       const data = await res.json()
-      console.log('getmovie')
-      setMovie(prev => [...data.results] )
+      setCurrentPage(data.page)
+      setMovie(prev => [...prev, ...data.results])
     } catch (error) {
       console.log(error)
     }
   }
 
-
+  const getMoreMovies = () => {
+    const endpoint = currentSelection === 'Popular' ? popular_endpoint : top_rated_endpoint
+    getMovies(`${endpoint}&page=${currentPage + 1}`)
+  }
 
   useEffect(() => {
     if (sessionStorage.movies) {
@@ -33,55 +39,40 @@ const Home = () => {
       return
     }
     getMovies(popular_endpoint)
-  }, [])
-
+  }, [popular_endpoint])
 
   useEffect(() => {
     sessionStorage.setItem('movies', JSON.stringify(movies))
   }, [movies])
 
-  // componentDidMount() {
-  // if (sessionStorage.movies) {
-  //   this.setState(JSON.parse(sessionStorage.movies))
-  //   return
-  // }
-  // console.log("here");
-  // const { popular_endpoint, top_rated_endpoint } = this.props.site.siteMetadata
-  // this.getMovies(popular_endpoint)
-  // }
   return (
-    <>
-      <Header siteTitle={title} getMovies={getMovies} />
-      <MovieGrid>
-        {movies.map(movie => {
-          return <MovieCard key={movie.id} movieId={movie.id} image={`${image_url}${image_size}${movie.poster_path}`} />
-        })}
-      </MovieGrid>
-    </>
+    <div>
+      <Header siteTitle={title} getMovies={getMovies} setSelection={setCurrentSelection} setMovie={setMovie} />
+      <StyledHome>
+        <h1>{currentSelection}</h1>
+
+        <InfiniteScroll
+          dataLength={movies.length}
+          next={getMoreMovies}
+          hasMore={currentPage >= 20 ? false : true}
+          loader={<h1>Loading...</h1>}
+          endMessage={<h1> Reached the end</h1>}
+        >
+          <MovieGrid>
+            {movies.map(movie => {
+              return (
+                <MovieCard key={movie.id} movieId={movie.id} image={`${image_url}${image_size}${movie.poster_path}`} />
+              )
+            })}
+          </MovieGrid>
+        </InfiniteScroll>
+      </StyledHome>
+    </div>
   )
 }
 
 Home.propTypes = {
   siteMetaData: PropTypes.object,
 }
-
-// export default () => (
-//   <StaticQuery
-//     query={graphql`
-//       query {
-//         site {
-//           siteMetadata {
-//             title
-//             top_rated_endpoint
-//             popular_endpoint
-//             image_url
-//             image_size
-//           }
-//         }
-//       }
-//     `}
-//     render={data => <Home site={data.site} />}
-//   />
-// )
 
 export default Home

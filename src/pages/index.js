@@ -1,7 +1,7 @@
 import React from 'react'
 import 'normalize.css'
 
-import { Router, Link } from '@reach/router'
+import { Router } from '@reach/router'
 
 import Home from './Home'
 import Movie from './Movie'
