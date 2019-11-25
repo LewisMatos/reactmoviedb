@@ -1,7 +1,6 @@
-let activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+let activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
 console.log(`Using environment config: '${activeEnv}'`)
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${activeEnv}`,
 })
 
@@ -12,6 +11,7 @@ module.exports = {
     author: `Lewis Matos`,
     tmdb_url: `${process.env.API_URL}`,
     tmdb_api_key: `${process.env.API_KEY}`,
+    search_url: `${process.env.API_URL}search/movie?api_key=${process.env.API_KEY}&query=`,
     top_rated_endpoint: `${process.env.API_URL}movie/top_rated?api_key=${process.env.API_KEY}`,
     popular_endpoint: `${process.env.API_URL}movie/popular?api_key=${process.env.API_KEY}`,
     image_url: `https://image.tmdb.org/t/p/`,
@@ -20,10 +20,10 @@ module.exports = {
   plugins: [
     `gatsby-plugin-styled-components`,
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ["Roboto", "Droid Serif"],
+          families: ['Roboto', 'Droid Serif'],
         },
       },
     },

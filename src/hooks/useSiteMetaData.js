@@ -6,6 +6,7 @@ export const useSiteMetadata = () => {
         site {
           siteMetadata {
             title
+            search_url
             top_rated_endpoint
             popular_endpoint
             image_url

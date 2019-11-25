@@ -7,9 +7,7 @@ const MovieCard = ({ image, movieId }) => {
   return (
     <StyledMovieCard>
       <Link to={`/movies/${movieId}`}>
-        <div>
-          <img src={image} alt="moviethumb" />
-        </div>
+        <div>{image && <img src={image} alt="moviethumb" />}</div>
         {/* <div className="overview">{overview}</div> */}
       </Link>
     </StyledMovieCard>
@@ -17,7 +15,7 @@ const MovieCard = ({ image, movieId }) => {
 }
 MovieCard.propTypes = {
   image: PropTypes.string,
-  movieId: PropTypes.number
+  movieId: PropTypes.number,
 }
 
 export default MovieCard
