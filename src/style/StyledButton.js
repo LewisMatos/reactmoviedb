@@ -18,4 +18,7 @@ export const StyledButton = styled.div`
        background-color: #959292;
     }
   }
+  .active{
+    background-color:white;
+  }
 `
