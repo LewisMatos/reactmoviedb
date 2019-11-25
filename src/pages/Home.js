@@ -24,7 +24,7 @@ const Home = () => {
       setCurrentPage(data.page)
       setMovie(prev => [...prev, ...data.results])
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 
