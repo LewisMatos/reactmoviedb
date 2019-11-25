@@ -10,7 +10,7 @@ export const StyledMovieDetail = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ),url(${props => props.backdrop});
+  background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ),url(${props => props.backdrop});
 
   .container{
     display:flex;
