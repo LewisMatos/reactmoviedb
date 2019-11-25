@@ -10,6 +10,7 @@ const Search = ({searchMovies}) => {
   }
 
   const handleSubmit = event => {
+    debugger;
     event.preventDefault()
     searchMovies(inputValue)
     setInputValue('')
@@ -26,8 +27,9 @@ const Search = ({searchMovies}) => {
               value={inputValue}
               className="searchTerm"
               placeholder="Movie title?"
+              required
             />
-            <button type="submit" className="searchButton">
+            <button className="searchButton">
               <span role="img" aria-label="search">🔍</span>
             </button>
           </div>
