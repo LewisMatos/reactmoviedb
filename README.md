@@ -31,7 +31,7 @@ API_KEY = 12345789538342432
 ## Install
 
 ```sh
-npm install
+npm install 
 ```
 
 ## Usage
