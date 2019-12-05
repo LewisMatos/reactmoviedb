@@ -20,6 +20,8 @@
 
 # 🏠 [ReactMovieDB](https://reactmoviedb.lewismatos.com/)
 
+# ![lewismatos](https://github.com/LewisMatos/reactmoviedb/blob/master/src/images/screencapture-reactmoviedb-lewismatos-2019-12-05-01_49_45.png)
+
 ## Environment Variables
 
 > Create a .env.development file
